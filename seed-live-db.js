@@ -1,8 +1,6 @@
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 import { DynamoDBDocumentClient, ScanCommand, PutCommand, UpdateCommand } from '@aws-sdk/lib-dynamodb';
 import { fromIni } from '@aws-sdk/credential-providers';
-import { resolveTableName } from './scripts/getTableName.js';
-import { readFileSync } from 'fs';
 
 // Configure client with the amplify-local profile
 const client = new DynamoDBClient({
@@ -14,18 +12,8 @@ const docClient = DynamoDBDocumentClient.from(client);
 
 // Get S3 bucket URL from amplify_outputs.json
 function getS3BucketUrl() {
-  try {
-    const amplifyOutputs = JSON.parse(readFileSync('./amplify_outputs.json', 'utf-8'));
-    const bucketName = amplifyOutputs.storage?.bucket_name;
-    if (bucketName) {
-      return `https://${bucketName}.s3.amazonaws.com`;
-    }
-  } catch (error) {
-    console.warn('⚠️  Could not read S3 bucket from amplify_outputs.json:', error.message);
-  }
-  
-  // Fallback to environment variable
-  return process.env.S3_BUCKET_URL || 'https://your-bucket-name.s3.amazonaws.com';
+  // Always use hardcoded PROD bucket
+  return 'https://amplify-d1j7hp8n2ncs5i-ma-dogprofileimagesbucket9a-1f3ccflmpepa.s3.amazonaws.com';
 }
 
 const S3_BUCKET_URL = getS3BucketUrl();
@@ -126,7 +114,7 @@ const dogsToAdd = [
   {
     id: 'carmela-001',
     uuid: '5650d757-8136-464b-a9bc-ccc82e6938e6',
-    name: 'Carmela',
+    name: 'Carmela!!!!',
     image: `${S3_BUCKET_URL}/dog-images/5650d757-8136-464b-a9bc-ccc82e6938e6.webp`,
     tagline: "I'm lost! Please help me find my humans.",
     ownerFirstName: 'Emily',
@@ -145,8 +133,8 @@ async function seedLiveDatabase() {
   try {
     console.log('🐕 Starting live database seeding...\n');
     
-  // Resolve table name (supports TABLE_NAME env var, DB_ENV env var, or --env flag)
-  const tableName = resolveTableName();
+  // Hardcoded table name for production
+  const tableName = 'Dog-a46lcdczfvgt7fl534ifthgk3i-NONE';
     
     for (const dog of dogsToAdd) {
       console.log(`Processing ${dog.name}...`);

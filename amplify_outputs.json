@@ -1,9 +1,9 @@
 {
   "auth": {
-    "user_pool_id": "us-east-1_skzI4i38u",
+    "user_pool_id": "us-east-1_54WZFXamM",
     "aws_region": "us-east-1",
-    "user_pool_client_id": "1gh96so9bd9tgqikec43ovbtrq",
-    "identity_pool_id": "us-east-1:58158af8-88f3-4b82-a507-5451805b4f56",
+    "user_pool_client_id": "2qb335854aaknqqhtdhpe8fpvl",
+    "identity_pool_id": "us-east-1:8fcc43c0-0084-4f4f-853e-150435648d57",
     "mfa_methods": [],
     "standard_required_attributes": [
       "email"
@@ -26,7 +26,7 @@
     "unauthenticated_identities_enabled": true
   },
   "data": {
-    "url": "https://qxxsv4t3zrasxpotujt2rxfoz4.appsync-api.us-east-1.amazonaws.com/graphql",
+    "url": "https://jwe7xqgktjdnrfbknbewm4pbve.appsync-api.us-east-1.amazonaws.com/graphql",
     "aws_region": "us-east-1",
     "default_authorization_type": "AWS_IAM",
     "authorization_types": [
@@ -184,11 +184,11 @@
   },
   "storage": {
     "aws_region": "us-east-1",
-    "bucket_name": "amplify-foundmyfriend-and-dogprofileimagesbucket9a-3dqyiev1nghu",
+    "bucket_name": "amplify-d1j7hp8n2ncs5i-ma-dogprofileimagesbucket9a-1f3ccflmpepa",
     "buckets": [
       {
         "name": "dogProfileImages",
-        "bucket_name": "amplify-foundmyfriend-and-dogprofileimagesbucket9a-3dqyiev1nghu",
+        "bucket_name": "amplify-d1j7hp8n2ncs5i-ma-dogprofileimagesbucket9a-1f3ccflmpepa",
         "aws_region": "us-east-1",
         "paths": {
           "dog-images/*": {

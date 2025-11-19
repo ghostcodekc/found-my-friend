@@ -1,7 +1,6 @@
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 import { DynamoDBDocumentClient, QueryCommand, ScanCommand } from '@aws-sdk/lib-dynamodb';
 import { fromIni } from '@aws-sdk/credential-providers';
-import { resolveTableName } from './scripts/getTableName.js';
 
 // Configure client with the amplify-local profile
 const client = new DynamoDBClient({
@@ -15,7 +14,7 @@ async function fetchDogByUuid(uuid) {
   try {
     console.log(`🔍 Searching for dog with UUID: ${uuid}\n`);
 
-  const tableName = resolveTableName();
+  const tableName = 'Dog-a46lcdczfvgt7fl534ifthgk3i-NONE';
 
     // Query for the dog by uuid (GSI or scan)
     // First, let's try a scan with filter since uuid might be a GSI
@@ -55,7 +54,7 @@ async function fetchDogByUuid(uuid) {
 
 async function scanDogByUuid(uuid) {
   try {
-    const tableName = resolveTableName();
+    const tableName = 'Dog-a46lcdczfvgt7fl534ifthgk3i-NONE';
 
     const command = new ScanCommand({
       TableName: tableName,
