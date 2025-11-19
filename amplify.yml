@@ -8,6 +8,14 @@ backend:
         - "cp ../amplify_outputs.json public/amplify_outputs.json || echo 'WARNING Could not copy amplify_outputs.json'"
         - "ls -la public/amplify_outputs.json || echo 'ERROR amplify_outputs.json not in public folder'"
         - npx ampx pipeline-deploy --branch $AWS_BRANCH --app-id $AWS_APP_ID
+    post_build:
+      commands:
+        - "echo 'Uploading dog images to S3 bucket'"
+        - "export S3_BUCKET_NAME=$(aws cloudformation describe-stack-resources --stack-name amplify-foundmyfriend-$AWS_BRANCH --query 'StackResources[?ResourceType==`AWS::S3::Bucket`].PhysicalResourceId' --output text)"
+        - "echo 'S3 Bucket: $S3_BUCKET_NAME'"
+        - "aws s3 sync public/images/ s3://$S3_BUCKET_NAME/dog-images/ --exclude '*' --include '*.webp' --content-type 'image/webp'"
+        - "export S3_BUCKET_URL=https://$S3_BUCKET_NAME.s3.amazonaws.com"
+        - "echo 'S3_BUCKET_URL=$S3_BUCKET_URL' >> ~/.bashrc"
 frontend:
   phases:
     build:
@@ -15,6 +23,9 @@ frontend:
         - npm run build
         - "echo 'Verifying amplify_outputs.json in dist'"
         - "ls -la dist/amplify_outputs.json || echo 'ERROR amplify_outputs.json not in dist'"
+    post_build:
+      commands:
+        - npm run seed:prod
   artifacts:
     baseDirectory: /dist
     files:

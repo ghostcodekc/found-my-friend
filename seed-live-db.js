@@ -2,6 +2,7 @@ import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 import { DynamoDBDocumentClient, ScanCommand, PutCommand, UpdateCommand } from '@aws-sdk/lib-dynamodb';
 import { fromIni } from '@aws-sdk/credential-providers';
 import { resolveTableName } from './scripts/getTableName.js';
+import { readFileSync } from 'fs';
 
 // Configure client with the amplify-local profile
 const client = new DynamoDBClient({
@@ -11,12 +12,31 @@ const client = new DynamoDBClient({
 
 const docClient = DynamoDBDocumentClient.from(client);
 
+// Get S3 bucket URL from amplify_outputs.json
+function getS3BucketUrl() {
+  try {
+    const amplifyOutputs = JSON.parse(readFileSync('./amplify_outputs.json', 'utf-8'));
+    const bucketName = amplifyOutputs.storage?.bucket_name;
+    if (bucketName) {
+      return `https://${bucketName}.s3.amazonaws.com`;
+    }
+  } catch (error) {
+    console.warn('⚠️  Could not read S3 bucket from amplify_outputs.json:', error.message);
+  }
+  
+  // Fallback to environment variable
+  return process.env.S3_BUCKET_URL || 'https://your-bucket-name.s3.amazonaws.com';
+}
+
+const S3_BUCKET_URL = getS3BucketUrl();
+console.log(`📦 Using S3 Bucket: ${S3_BUCKET_URL}\n`);
+
 const dogsToAdd = [
   {
     id: 'tesla-001',
     uuid: '1',
     name: 'Tesla',
-    image: '/images/tesla.webp',
+    image: `${S3_BUCKET_URL}/dog-images/1.webp`,
     tagline: "🪽🐕🪽",
     ownerFirstName: 'Andrew',
     ownerLastName: 'Grube',
@@ -30,7 +50,7 @@ const dogsToAdd = [
     id: 'cipher-001',
     uuid: '019fbd5b-22a8-4415-a11c-08e26c46708e',
     name: 'Cipher',
-    image: '/images/cipher.webp',
+    image: `${S3_BUCKET_URL}/dog-images/019fbd5b-22a8-4415-a11c-08e26c46708e.webp`,
     tagline: "I'm lost! Please help me find my humans.",
     ownerFirstName: 'Andrew',
     ownerLastName: 'Grube',
@@ -45,7 +65,7 @@ const dogsToAdd = [
     id: 'benji-001',
     uuid: 'be7e5a93-9abd-4bb3-8ee7-a70fb45bf4b4',
     name: 'Benji',
-    image: '/images/benji.webp',
+    image: `${S3_BUCKET_URL}/dog-images/be7e5a93-9abd-4bb3-8ee7-a70fb45bf4b4.webp`,
     tagline: "I'm lost! Please help me find my humans.",
     ownerFirstName: 'Andrew',
     ownerLastName: 'Grube',
@@ -59,7 +79,7 @@ const dogsToAdd = [
     id: 'paccino-001',
     uuid: 'eb2a745f-d1f8-478b-aa18-38443d998c4f',
     name: 'Paccino',
-    image: '/images/paccino.webp',
+    image: `${S3_BUCKET_URL}/dog-images/eb2a745f-d1f8-478b-aa18-38443d998c4f.webp`,
     tagline: "I'm lost! Please help me find my humans.",
     ownerFirstName: 'Kayla',
     ownerLastName: 'Curnutte',
@@ -75,7 +95,7 @@ const dogsToAdd = [
     id: 'kingsley-001',
     uuid: '90321c29-1993-4715-a32c-7fe78686ee84',
     name: 'Kingsley',
-    image: '/images/kingsley.webp',
+    image: `${S3_BUCKET_URL}/dog-images/90321c29-1993-4715-a32c-7fe78686ee84.webp`,
     tagline: "I'm lost! Please help me find my humans.",
     ownerFirstName: 'Jesi',
     ownerLastName: 'Dang-Machuca',
@@ -91,12 +111,28 @@ const dogsToAdd = [
     id: 'charlotte-001',
     uuid: '85815c34-4157-42d3-9cda-0a117707d1e7',
     name: 'Charlotte',
-    image: '/images/charlotte.webp',
+    image: `${S3_BUCKET_URL}/dog-images/85815c34-4157-42d3-9cda-0a117707d1e7.webp`,
     tagline: "I'm lost! Please help me find my humans.",
     ownerFirstName: 'Jesi',
     ownerLastName: 'Dang-Machuca',
     phoneLink: '3104240642',
     temperament: 'Queen Bee 🐝 energy.',
+    allergies: 'No allergies.',
+    dietary: 'Loves cheese, peanut butter, and kisses.',
+    microchipped: 'Yes',
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  },
+  {
+    id: 'carmela-001',
+    uuid: '5650d757-8136-464b-a9bc-ccc82e6938e6',
+    name: 'Carmela',
+    image: `${S3_BUCKET_URL}/dog-images/5650d757-8136-464b-a9bc-ccc82e6938e6.webp`,
+    tagline: "I'm lost! Please help me find my humans.",
+    ownerFirstName: 'Emily',
+    ownerLastName: 'Nold',
+    phoneLink: '8165093125',
+    temperament: 'Will work for treats.',
     allergies: 'No allergies.',
     dietary: 'Loves cheese, peanut butter, and kisses.',
     microchipped: 'Yes',

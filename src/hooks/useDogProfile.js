@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { generateClient } from 'aws-amplify/data';
+import { getUrl } from 'aws-amplify/storage';
 import { Amplify } from 'aws-amplify';
 
 export const useDogProfile = (uuid) => {
@@ -40,12 +41,32 @@ export const useDogProfile = (uuid) => {
 
         if (dogs && dogs.length > 0) {
           const dog = dogs[0];
+          
+          // Get presigned URL for the dog image
+          let imageUrl = dog.image;
+          if (dog.image && dog.image.includes('/dog-images/')) {
+            try {
+              // Extract the S3 key from the full URL
+              const key = dog.image.split('/dog-images/')[1];
+              const urlResult = await getUrl({
+                path: `dog-images/${key}`,
+                options: {
+                  expiresIn: 3600, // URL expires in 1 hour
+                },
+              });
+              imageUrl = urlResult.url.toString();
+            } catch (storageError) {
+              console.error('Error getting presigned URL:', storageError);
+              // Fall back to original URL if presigned URL fails
+            }
+          }
+          
           // Transform DynamoDB data to match our expected format
           const profile = {
             id: dog.id,
             uuid: dog.uuid,
             name: dog.name,
-            image: dog.image,
+            image: imageUrl,
             tagline: dog.tagline,
             ownerFirstName: dog.ownerFirstName,
             ownerLastName: dog.ownerLastName,

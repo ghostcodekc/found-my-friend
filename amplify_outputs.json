@@ -182,5 +182,30 @@
       "nonModels": {}
     }
   },
+  "storage": {
+    "aws_region": "us-east-1",
+    "bucket_name": "amplify-foundmyfriend-and-dogprofileimagesbucket9a-3dqyiev1nghu",
+    "buckets": [
+      {
+        "name": "dogProfileImages",
+        "bucket_name": "amplify-foundmyfriend-and-dogprofileimagesbucket9a-3dqyiev1nghu",
+        "aws_region": "us-east-1",
+        "paths": {
+          "dog-images/*": {
+            "authenticated": [
+              "get",
+              "list",
+              "write",
+              "delete"
+            ],
+            "guest": [
+              "get",
+              "list"
+            ]
+          }
+        }
+      }
+    ]
+  },
   "version": "1.4"
 }

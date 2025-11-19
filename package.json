@@ -17,7 +17,8 @@
     "update-dog": "node update-dog-by-uuid.js",
     "delete-dog": "node delete-dog-by-uuid.js",
     "delete-dog:sandbox": "node delete-dog-by-uuid.js sandbox",
-    "delete-dog:prod": "node delete-dog-by-uuid.js prod"
+    "delete-dog:prod": "node delete-dog-by-uuid.js prod",
+    "rename-images": "node scripts/rename-images.js"
   },
   "dependencies": {
     "aws-amplify": "^6.15.8",
