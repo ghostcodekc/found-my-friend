@@ -27,9 +27,4 @@ amplifytools.xcconfig
 **.sample
 #amplify-do-not-edit-end
 
-seed-live-db.js
-fetch-dog*
-delete-dog*
-
-
 amplify_outputs*

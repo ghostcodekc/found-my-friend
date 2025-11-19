@@ -59,6 +59,70 @@ npm run update-dog 90321c29-1993-4715-a32c-7fe78686ee84 name=Kingsley
 npm run delete-dog 9f2893bc-5517-4929-a228-2559d28569d1
 ```
 
+## Switching between sandbox and production databases
+
+The repo scripts (`seed-live-db.js`, `fetch-dog-by-uuid.js`, `delete-dog-by-uuid.js`) now support selecting which DynamoDB table to operate on so you can safely target a sandbox/development table or the production table.
+
+Resolution order (highest precedence first):
+
+1. TABLE_NAME environment variable — provide a full table name (e.g. `Dog-pkowf7ajanhi5pljnt46p4un6q-NONE`).
+2. CLI flag `--env` or `-e` — accepts `sandbox`, `prod`, or a raw table name.
+3. DB_ENV environment variable — accepts `sandbox`, `prod`, or a raw table name.
+4. Default: `prod` (keeps previous behavior).
+
+Predefined mapping:
+
+- `sandbox` → `Dog-pkowf7ajanhi5pljnt46p4un6q-NONE`
+- `prod` → `Dog-a46lcdczfvgt7fl534ifthgk3i-NONE`
+
+
+Recommended usage (npm scripts)
+
+Use the dedicated npm scripts to seed the sandbox or production database. These avoid passing flags that npm may consume and are cross-platform:
+
+PowerShell / Bash / WSL:
+
+```powershell
+# Seed the sandbox table
+npm run seed:sandbox
+
+# Seed the production table
+npm run seed:prod
+
+# Fetch a dog from the sandbox table (npm script)
+npm run fetch-dog:sandbox -- 019fbd5b-22a8-4415-a11c-08e26c46708e
+
+# Fetch a dog from the production table (npm script)
+npm run fetch-dog:prod -- 019fbd5b-22a8-4415-a11c-08e26c46708e
+
+# Delete a dog from the sandbox table (npm script)
+npm run delete-dog:sandbox -- 019fbd5b-22a8-4415-a11c-08e26c46708e
+
+# Delete a dog from the production table (npm script)
+npm run delete-dog:prod -- 019fbd5b-22a8-4415-a11c-08e26c46708e
+```
+
+Other supported options (advanced):
+
+- Provide a full table name via env var:
+
+```powershell
+$env:TABLE_NAME='Dog-pkowf7ajanhi5pljnt46p4un6q-NONE'; npm run seed
+```
+
+- Use DB_ENV env var (e.g., `sandbox` or `prod`):
+
+```powershell
+$env:DB_ENV='sandbox'; npm run seed
+```
+
+Notes:
+
+- If you provide a raw table name to `TABLE_NAME` or as the first script argument, the helper will use it directly.
+- The default behavior remains **prod** to avoid accidental changes to sandbox unless explicitly requested. If you prefer the opposite (default to sandbox), I can flip it.
+- The helper logs which table it selected so you can confirm before any write operations occur.
+
+
 ## Available Scripts
 
 - `npm run dev` - Start Vite dev server
@@ -69,6 +133,16 @@ npm run delete-dog 9f2893bc-5517-4929-a228-2559d28569d1
 - `npm run fetch-dog <uuid>` - Fetch a dog by UUID
 - `npm run update-dog <uuid> field=value` - Update dog fields
 - `npm run delete-dog <uuid>` - Delete a dog
+ - `npm run seed` - Seed/update database with dogs
+ - `npm run seed:sandbox` - Seed sandbox DB
+ - `npm run seed:prod` - Seed production DB
+ - `npm run fetch-dog <uuid>` - Fetch a dog by UUID (default table resolution)
+ - `npm run fetch-dog:sandbox -- <uuid>` - Fetch a dog from sandbox
+ - `npm run fetch-dog:prod -- <uuid>` - Fetch a dog from production
+ - `npm run update-dog <uuid> field=value` - Update dog fields
+ - `npm run delete-dog <uuid>` - Delete a dog (default table resolution)
+ - `npm run delete-dog:sandbox -- <uuid>` - Delete a dog from sandbox
+ - `npm run delete-dog:prod -- <uuid>` - Delete a dog from production
 
 
 ## Features

@@ -9,9 +9,15 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "seed": "node seed-live-db.js",
+    "seed:sandbox": "node seed-live-db.js sandbox",
+    "seed:prod": "node seed-live-db.js prod",
     "fetch-dog": "node fetch-dog-by-uuid.js",
+    "fetch-dog:sandbox": "node fetch-dog-by-uuid.js sandbox",
+    "fetch-dog:prod": "node fetch-dog-by-uuid.js prod",
     "update-dog": "node update-dog-by-uuid.js",
-    "delete-dog": "node delete-dog-by-uuid.js"
+    "delete-dog": "node delete-dog-by-uuid.js",
+    "delete-dog:sandbox": "node delete-dog-by-uuid.js sandbox",
+    "delete-dog:prod": "node delete-dog-by-uuid.js prod"
   },
   "dependencies": {
     "aws-amplify": "^6.15.8",
