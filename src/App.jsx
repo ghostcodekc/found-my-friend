@@ -145,23 +145,25 @@ function App() {
         </div>
 
         {/* --- Sticky Action Footer --- */}
-        <div className="sticky bottom-0 left-0 right-0 p-4 bg-white border-t border-gray-100 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] space-y-2">
-          <a 
-            href={`tel:${dogProfile.phoneLink}`}
-            className="flex items-center justify-center gap-3 w-full bg-emerald-600 text-white text-lg font-bold py-3 rounded-xl shadow-lg shadow-gray-200 active:scale-95 transition-all duration-100"
-          >
-            <Phone className="w-6 h-6" />
-            Call {dogProfile.ownerFirstName} Now
-          </a>
-          
-          <button
-            onClick={handleSendLocation}
-            className="flex items-center justify-center gap-3 w-full bg-blue-600 text-white text-lg font-bold py-3 rounded-xl shadow-lg shadow-gray-200 active:scale-95 transition-all duration-100 animate-pulse-slow"
-          >
-            <MessageCircle className="w-5 h-5" />
-            Send Location via Text
-          </button>
-        </div>
+        {uuid !== '1' && (
+          <div className="sticky bottom-0 left-0 right-0 p-4 bg-white border-t border-gray-100 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] space-y-2">
+            <a 
+              href={`tel:${dogProfile.phoneLink}`}
+              className="flex items-center justify-center gap-3 w-full bg-emerald-600 text-white text-lg font-bold py-3 rounded-xl shadow-lg shadow-gray-200 active:scale-95 transition-all duration-100"
+            >
+              <Phone className="w-6 h-6" />
+              Call {dogProfile.ownerFirstName} Now
+            </a>
+            
+            <button
+              onClick={handleSendLocation}
+              className="flex items-center justify-center gap-3 w-full bg-blue-600 text-white text-lg font-bold py-3 rounded-xl shadow-lg shadow-gray-200 active:scale-95 transition-all duration-100 animate-pulse-slow"
+            >
+              <MessageCircle className="w-5 h-5" />
+              Send Location via Text
+            </button>
+          </div>
+        )}
 
       </div>
     </div>
