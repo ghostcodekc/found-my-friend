@@ -9,9 +9,9 @@ import NotFound from './pages/NotFound.jsx'
 import amplifyConfig from '../amplify_outputs.json'
 
 // Configure Amplify with production config
-console.log('Loading production Amplify config');
+// console.log('Loading production Amplify config');
 Amplify.configure(amplifyConfig);
-console.log('✅ Amplify configured');
+// console.log('✅ Amplify configured');
 
 // Render app
 createRoot(document.getElementById('root')).render(

@@ -23,7 +23,7 @@
             if (response.ok) {
               const config = await response.json();
               window.AMPLIFY_CONFIG = config;
-              console.log('✅ Amplify config loaded from:', path);
+              // console.log('✅ Amplify config loaded from:', path);
               return;
             }
           } catch (error) {
