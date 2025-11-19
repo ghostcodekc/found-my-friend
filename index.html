@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Found My Friend</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- Load Amplify config if available -->
+    <script>
+      async function loadAmplifyConfig() {
+        const possiblePaths = [
+          '/amplify_outputs.json',
+          './amplify_outputs.json',
+          '../amplify_outputs.json'
+        ];
+        
+        for (const path of possiblePaths) {
+          try {
+            const response = await fetch(path);
+            if (response.ok) {
+              const config = await response.json();
+              window.AMPLIFY_CONFIG = config;
+              console.log('✅ Amplify config loaded from:', path);
+              return;
+            }
+          } catch (error) {
+            // Try next path
+          }
+        }
+        
+        console.log('ℹ️ amplify_outputs.json not found - will use local config');
+      }
+      
+      loadAmplifyConfig();
+    </script>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

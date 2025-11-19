@@ -1,0 +1,50 @@
+{
+  "name": "found-my-friend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "seed": "node seed-live-db.js",
+    "fetch-dog": "node fetch-dog-by-uuid.js",
+    "update-dog": "node update-dog-by-uuid.js",
+    "delete-dog": "node delete-dog-by-uuid.js"
+  },
+  "dependencies": {
+    "aws-amplify": "^6.15.8",
+    "lucide-react": "^0.554.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-router-dom": "^7.9.6"
+  },
+  "devDependencies": {
+    "@aws-amplify/backend": "^1.18.0",
+    "@aws-amplify/backend-cli": "^1.8.0",
+    "@aws-sdk/client-dynamodb": "^3.934.0",
+    "@aws-sdk/credential-providers": "^3.934.0",
+    "@aws-sdk/lib-dynamodb": "^3.934.0",
+    "@aws-sdk/util-dynamodb": "^3.934.0",
+    "@eslint/js": "^9.39.1",
+    "@tailwindcss/postcss": "^4.1.17",
+    "@tailwindcss/vite": "^4.1.17",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "@vitejs/plugin-react": "^5.1.0",
+    "autoprefixer": "^10.4.22",
+    "aws-cdk-lib": "^2.216.0",
+    "constructs": "^10.4.3",
+    "esbuild": "^0.27.0",
+    "eslint": "^9.39.1",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.4.24",
+    "globals": "^16.5.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.17",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "vite": "^7.2.2"
+  }
+}

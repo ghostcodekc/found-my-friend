@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+body {
+  background-color: #e5e7eb; /* Gray-200 */
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Custom animation for the call button to draw attention */
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .95; transform: scale(0.99); }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s infinite ease-in-out;
+}
