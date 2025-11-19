@@ -10,7 +10,7 @@ export default function Home() {
         {/* --- Hero Section --- */}
         <div className="bg-linear-to-b from-emerald-50 to-blue-50 p-8 text-center">
           <div className="text-6xl mb-4">🐕</div>
-          <h1 className="text-4xl font-bold text-gray-800 mb-2">Fetch My Owner</h1>
+          <h1 className="text-4xl font-bold text-gray-800 mb-2">Found My Friend</h1>
           <p className="text-gray-600 text-lg">Reuniting Lost Pets with Their Families</p>
         </div>
 

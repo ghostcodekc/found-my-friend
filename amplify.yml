@@ -1,0 +1,26 @@
+version: 1
+backend:
+  phases:
+    build:
+      commands:
+        - amplifyPush --simple
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - npm ci
+        - "echo 'Copying amplify_outputs.json from root to public folder'"
+        - "cp ../amplify_outputs.json public/amplify_outputs.json || echo 'WARNING Could not copy amplify_outputs.json'"
+        - "ls -la public/amplify_outputs.json || echo 'ERROR amplify_outputs.json not in public folder'"
+    build:
+      commands:
+        - npm run build
+        - "echo 'Verifying amplify_outputs.json in dist'"
+        - "ls -la dist/amplify_outputs.json || echo 'ERROR amplify_outputs.json not in dist'"
+  artifacts:
+    baseDirectory: /dist
+    files:
+      - "**/*"
+  cache:
+    paths:
+      - node_modules/**/*
