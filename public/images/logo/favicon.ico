@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Outer circle -->
+  <circle cx="16" cy="16" r="15" stroke="#34D399" stroke-width="2" fill="#ECFDF5" />
+  
+  <!-- Sonar rings -->
+  <circle cx="16" cy="16" r="12" stroke="#34D399" stroke-width="1" fill="none" opacity="0.4" />
+  <circle cx="16" cy="16" r="9" stroke="#34D399" stroke-width="1" fill="none" opacity="0.6" />
+  
+  <!-- Radar sweep -->
+  <line x1="16" y1="16" x2="16" y2="4" stroke="#34D399" stroke-width="1.5" opacity="0.5" />
+  
+  <!-- Paw print -->
+  <ellipse cx="16" cy="15.5" rx="2.5" ry="3" fill="#34D399" />
+  <ellipse cx="13" cy="12" rx="1.5" ry="2" fill="#34D399" />
+  <ellipse cx="16" cy="11" rx="1.5" ry="2" fill="#34D399" />
+  <ellipse cx="19" cy="12" rx="1.5" ry="2" fill="#34D399" />
+  <ellipse cx="16" cy="19" rx="1.5" ry="2" fill="#34D399" />
+</svg>

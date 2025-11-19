@@ -14,6 +14,10 @@ export default {
         secondary: '#10b981', // Material Green (for safety/call)
         surface: '#ffffff',
         background: '#f3f4f6',
+        grad1: '#F0E491',
+        grad2: '#BBC863',
+        grad3: '#658C58',
+        grad4: '#31694E'
       }
     },
   },

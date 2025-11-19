@@ -129,20 +129,15 @@ Notes:
 - `npm run build` - Build for production
 - `npm run lint` - Run ESLint
 - `npm run preview` - Preview production build locally
-- `npm run seed` - Seed/update database with dogs
-- `npm run fetch-dog <uuid>` - Fetch a dog by UUID
-- `npm run update-dog <uuid> field=value` - Update dog fields
-- `npm run delete-dog <uuid>` - Delete a dog
- - `npm run seed` - Seed/update database with dogs
- - `npm run seed:sandbox` - Seed sandbox DB
- - `npm run seed:prod` - Seed production DB
- - `npm run fetch-dog <uuid>` - Fetch a dog by UUID (default table resolution)
- - `npm run fetch-dog:sandbox -- <uuid>` - Fetch a dog from sandbox
- - `npm run fetch-dog:prod -- <uuid>` - Fetch a dog from production
- - `npm run update-dog <uuid> field=value` - Update dog fields
- - `npm run delete-dog <uuid>` - Delete a dog (default table resolution)
- - `npm run delete-dog:sandbox -- <uuid>` - Delete a dog from sandbox
- - `npm run delete-dog:prod -- <uuid>` - Delete a dog from production
+
+- `npm run seed:sandbox` - Seed sandbox DB
+- `npm run seed:prod` - Seed production DB
+
+- `npm run fetch-dog:sandbox <uuid>` - Fetch a dog from sandbox
+- `npm run fetch-dog:prod <uuid>` - Fetch a dog from production
+
+- `npm run delete-dog:sandbox <uuid>` - Delete a dog from sandbox
+- `npm run delete-dog:prod <uuid>` - Delete a dog from production
 
 
 ## Features

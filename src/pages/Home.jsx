@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, QrCode, Phone, MapPin, Search, Shield } from 'lucide-react';
+import { Heart, QrCode, Phone, MapPin, Lock, Search, Shield } from 'lucide-react';
 
 export default function Home() {
   return (
@@ -8,7 +8,7 @@ export default function Home() {
       <div className="w-full max-w-md mx-auto bg-surface shadow-xl min-h-screen flex flex-col">
         
         {/* --- Hero Section --- */}
-        <div className="bg-linear-to-b from-emerald-50 to-blue-50 p-8 text-center">
+        <div className="bg-gradient-to-b from-emerald-50 to-blue-50 p-8 text-center">
           <div className="text-6xl mb-4">🐕</div>
           <h1 className="text-4xl font-bold text-gray-800 mb-2">Found My Friend</h1>
           <p className="text-gray-600 text-lg">Reuniting Lost Pets with Their Families</p>
@@ -25,7 +25,7 @@ export default function Home() {
             </h2>
             
             <div className="space-y-3">
-              <div className="bg-emerald-50 p-4 rounded-lg">
+              <div className="bg-[#ECF4E8] p-4 rounded-lg">
                 <div className="flex gap-3">
                   <div className="text-2xl shrink-0">1️⃣</div>
                   <div>
@@ -35,7 +35,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="bg-blue-50 p-4 rounded-lg">
+              <div className="bg-[#CBF3BB] p-4 rounded-lg">
                 <div className="flex gap-3">
                   <div className="text-2xl shrink-0">2️⃣</div>
                   <div>
@@ -45,7 +45,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="bg-purple-50 p-4 rounded-lg">
+              <div className="bg-[#ABE7B2] p-4 rounded-lg">
                 <div className="flex gap-3">
                   <div className="text-2xl shrink-0">3️⃣</div>
                   <div>
@@ -55,7 +55,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="bg-pink-50 p-4 rounded-lg">
+              <div className="bg-[#93BFC7] p-4 rounded-lg">
                 <div className="flex gap-3">
                   <div className="text-2xl shrink-0">4️⃣</div>
                   <div>
@@ -100,17 +100,17 @@ export default function Home() {
               </div>
 
               <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
-                <Heart className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
+                <Lock className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
                 <div>
-                  <p className="font-semibold text-gray-800 text-sm">100% Free</p>
-                  <p className="text-xs text-gray-600">No cost to reunite lost pets with owners</p>
+                  <p className="font-semibold text-gray-800 text-sm">Privacy Protected</p>
+                  <p className="text-xs text-gray-600">Your contact information stays private until someone scans your pet's QR code</p>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Call to Action */}
-          <div className="bg-linear-to-r from-emerald-50 to-blue-50 p-4 rounded-xl border-2 border-emerald-200">
+          <div className="bg-gradient-to-r from-emerald-50 to-blue-50 p-4 rounded-xl border-2 border-emerald-200">
             <p className="text-sm text-gray-700 text-center">
               <Heart className="inline w-4 h-4 text-red-500 mr-1" />
               Help reunite a lost pet today! If you find a dog with a tag, scan it to get started.
