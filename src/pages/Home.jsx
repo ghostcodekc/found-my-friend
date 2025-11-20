@@ -9,7 +9,9 @@ export default function Home() {
         
         {/* --- Hero Section --- */}
         <div className="bg-gradient-to-b from-emerald-50 to-blue-50 p-8 text-center">
-          <div className="text-6xl mb-4">🐕</div>
+          <div className="mb-6">
+          <img src="/logo.png" alt="Found My Friend" className="w-24 h-auto mx-auto" />
+        </div>
           <h1 className="text-4xl font-bold text-gray-800 mb-2">Found My Friend</h1>
           <p className="text-gray-600 text-lg">Reuniting Lost Pets with Their Families</p>
         </div>

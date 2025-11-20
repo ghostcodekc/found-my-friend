@@ -114,7 +114,7 @@ const dogsToAdd = [
   {
     id: 'carmela-001',
     uuid: '5650d757-8136-464b-a9bc-ccc82e6938e6',
-    name: 'Carmela!!!!',
+    name: 'Carmela',
     image: `${S3_BUCKET_URL}/dog-images/5650d757-8136-464b-a9bc-ccc82e6938e6.webp`,
     tagline: "I'm lost! Please help me find my humans.",
     ownerFirstName: 'Emily',

@@ -6,7 +6,9 @@ export default function NotFound() {
     <div className="min-h-screen bg-background flex justify-center items-center p-4">
       <div className="w-full max-w-md bg-surface shadow-xl rounded-2xl p-8 text-center">
         {/* Lost Dog Icon */}
-        <div className="mb-6 text-6xl">🐕</div>
+        <div className="mb-6">
+          <img src="/logo.png" alt="Found My Friend" className="w-24 h-auto mx-auto" />
+        </div>
         
         <h1 className="text-4xl font-bold text-gray-800 mb-2">Uh Oh!</h1>
         <p className="text-xl font-semibold text-gray-700 mb-2">This page is lost...</p>
